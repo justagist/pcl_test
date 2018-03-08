@@ -1,0 +1,2 @@
+/usr/bin/ar qc /home/saif/workspace/test_pcl/devel/lib/libproj_libs.a  CMakeFiles/proj_libs.dir/src/aml_perception/pcl_processing.cpp.o
+/usr/bin/ranlib /home/saif/workspace/test_pcl/devel/lib/libproj_libs.a
