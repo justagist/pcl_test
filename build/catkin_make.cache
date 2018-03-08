@@ -1,2 +1,0 @@
-aml_perception
--DCATKIN_DEVEL_PREFIX=/home/saif/workspace/test_pcl/devel -DCMAKE_INSTALL_PREFIX=/home/saif/workspace/test_pcl/install -G Unix Makefiles

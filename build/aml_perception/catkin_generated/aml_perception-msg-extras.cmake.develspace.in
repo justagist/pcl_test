@@ -1,2 +1,0 @@
-set(aml_perception_MESSAGE_FILES "")
-set(aml_perception_SERVICE_FILES "/home/saif/workspace/test_pcl/src/aml_perception/srv/AddTwoInts.srv")
