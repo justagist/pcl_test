@@ -5,3 +5,5 @@ string in_string_1
 ---
 sensor_msgs/PointCloud out_cloud_1
 string out_string_1
+string info
+bool success

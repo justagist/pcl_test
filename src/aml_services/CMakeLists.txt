@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(aml_perception)
+project(aml_services)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -13,7 +13,7 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
 # PCL ########################## PCL (apparently) links the required BOOST libraries and Eigen3 also
 find_package(PCL REQUIRED)
@@ -26,10 +26,10 @@ add_definitions(${PCL_DEFINITIONS})
 # find_package(Boost REQUIRED COMPONENTS system)
 
 
-catkin_python_setup()
+# catkin_python_setup()
 
 SET(PROJECT_INCLUDE ${PROJECT_SOURCE_DIR}/include)
-SET(PROJECT_CODE_SOURCE ${PROJECT_SOURCE_DIR}/src/aml_perception)
+SET(PROJECT_CODE_SOURCE ${PROJECT_SOURCE_DIR}/src/aml_services)
 # include_directories(include)
 include_directories(
   ${catkin_INCLUDE_DIRS}
@@ -40,7 +40,7 @@ include_directories(
 add_service_files(
   FILES
   AddTwoInts.srv
-  PCLCustomMsg.srv
+  PCLUtility.srv
 )
 
 generate_messages(
@@ -66,9 +66,9 @@ add_library(proj_libs STATIC ${PROJ_LIBS})
 # add_executable(subs ${PROJECT_CODE_SOURCE}/subs.cpp)
 # target_link_libraries(subs ${LINK_LIBS} ${catkin_LIBRARIES} proj_libs)
 
-add_executable(utils ${PROJECT_CODE_SOURCE}/pcl_utils_server.cpp)
-target_link_libraries(utils ${LINK_LIBS} ${catkin_LIBRARIES} proj_libs)
-add_dependencies( utils ${PROJECT_NAME}_generate_messages_cpp )
+add_executable(pcl_server ${PROJECT_CODE_SOURCE}/pcl_utils_server.cpp)
+target_link_libraries(pcl_server ${LINK_LIBS} ${catkin_LIBRARIES} proj_libs)
+add_dependencies(pcl_server ${PROJECT_NAME}_generate_messages_cpp)
 
 # add_executable(srvr ${PROJECT_CODE_SOURCE}/test_service.cpp)
 # target_link_libraries(srvr ${catkin_LIBRARIES})
@@ -76,7 +76,7 @@ add_dependencies( utils ${PROJECT_NAME}_generate_messages_cpp )
 
 add_executable(clnt ${PROJECT_CODE_SOURCE}/test_client.cpp)
 target_link_libraries(clnt ${catkin_LIBRARIES})
-add_dependencies( clnt ${PROJECT_NAME}_generate_messages_cpp )
+add_dependencies(clnt ${PROJECT_NAME}_generate_messages_cpp)
 # add_dependencies(add_two_ints_client beginner_tutorials_gencpp)
 
 #install(

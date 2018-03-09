@@ -1,15 +1,13 @@
 <?xml version="1.0"?>
 <package>
-  <name>aml_perception</name>
+  <name>aml_services</name>
   <version>0.0.0</version>
-  <description>The aml_perception package</description>
+  <description>The test package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag --> 
   <!-- Example:  -->
   <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
-  <maintainer email="exa371@bham.ac.uk">Ermano Arruda</maintainer>
-  <maintainer email="mjm522@bham.ac.uk">Michael Jacob</maintainer>
-
+  <maintainer email="sxs1412@bham.ac.uk">Saif Sidhik</maintainer>
 
   <!-- One license tag required, multiple allowed, one license per tag -->
   <!-- Commonly used license strings: -->
@@ -27,8 +25,7 @@
   <!-- Authors do not have to be maintianers, but could be -->
   <!-- Example: -->
   <!-- <author email="jane.doe@example.com">Jane Doe</author> -->
-  <author email="exa371@bham.ac.uk">Ermano Arruda</author>
-  <author email="mjm522@bham.ac.uk">Michael Jacob</author>
+  <author email="sxs1412@bham.ac.uk">Saif Sidhik</author>
 
 
   <!-- The *_depend tags are used to specify dependencies -->
