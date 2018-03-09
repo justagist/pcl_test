@@ -28,17 +28,6 @@ add_definitions(${PCL_DEFINITIONS})
 
 catkin_python_setup()
 
-
-add_service_files(
-  FILES
-  AddTwoInts.srv
-)
-
-generate_messages(
-  DEPENDENCIES
-  std_msgs  # and/or other packages containing depended messages
-)
-
 SET(PROJECT_INCLUDE ${PROJECT_SOURCE_DIR}/include)
 SET(PROJECT_CODE_SOURCE ${PROJECT_SOURCE_DIR}/src/aml_perception)
 # include_directories(include)
@@ -47,6 +36,19 @@ include_directories(
   ${PROJECT_INCLUDE}
   ${PROJECT_SOURCE_DIR}
 )
+
+add_service_files(
+  FILES
+  AddTwoInts.srv
+  PCLCustomMsg.srv
+)
+
+generate_messages(
+  DEPENDENCIES
+  std_msgs  
+  sensor_msgs # and/or other packages containing depended messages
+)
+
 
 SET(LINK_LIBS ${PCL_LIBRARIES})
 
@@ -58,21 +60,23 @@ add_library(proj_libs STATIC ${PROJ_LIBS})
 #############
 ## Install ##
 #############
-add_executable(run_file ${PROJECT_CODE_SOURCE}/test_pcl.cpp)
-target_link_libraries(run_file ${LINK_LIBS} ${catkin_LIBRARIES} proj_libs)
+# add_executable(run_file ${PROJECT_CODE_SOURCE}/test_pcl.cpp)
+# target_link_libraries(run_file ${LINK_LIBS} ${catkin_LIBRARIES} proj_libs)
 
-add_executable(subs ${PROJECT_CODE_SOURCE}/subs.cpp)
-target_link_libraries(subs ${LINK_LIBS} ${catkin_LIBRARIES} proj_libs)
+# add_executable(subs ${PROJECT_CODE_SOURCE}/subs.cpp)
+# target_link_libraries(subs ${LINK_LIBS} ${catkin_LIBRARIES} proj_libs)
 
 add_executable(utils ${PROJECT_CODE_SOURCE}/pcl_utils_server.cpp)
 target_link_libraries(utils ${LINK_LIBS} ${catkin_LIBRARIES} proj_libs)
+add_dependencies( utils ${PROJECT_NAME}_generate_messages_cpp )
 
-add_executable(srvr ${PROJECT_CODE_SOURCE}/test_service.cpp)
-target_link_libraries(srvr ${catkin_LIBRARIES})
+# add_executable(srvr ${PROJECT_CODE_SOURCE}/test_service.cpp)
+# target_link_libraries(srvr ${catkin_LIBRARIES})
 # add_dependencies(add_two_ints_server beginner_tutorials_gencpp)
 
 add_executable(clnt ${PROJECT_CODE_SOURCE}/test_client.cpp)
 target_link_libraries(clnt ${catkin_LIBRARIES})
+add_dependencies( clnt ${PROJECT_NAME}_generate_messages_cpp )
 # add_dependencies(add_two_ints_client beginner_tutorials_gencpp)
 
 #install(

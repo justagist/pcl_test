@@ -1,6 +1,6 @@
 #include "ros/ros.h"
 #include "pcl_processing.h"
-#include "aml_perception/AddTwoInts.h"
+#include "aml_perception/PCLCustomMsg.h"
 
 
 class PCLUtilityServer
@@ -13,16 +13,8 @@ private:
 
     void initiliseServer_();
 
-    static bool processRequest(aml_perception::AddTwoInts::Request  &req,
-         aml_perception::AddTwoInts::Response &res)
-{
-  res.ans = req.a + req.b;
-  ROS_INFO("request: x=%ld, y=%ld", (long int)req.a, (long int)req.b);
-  ROS_INFO("sending back response: [%ld]", (long int)res.ans);
-  return true;
-}
-
-
+    static bool processRequest(aml_perception::PCLCustomMsg::Request  &req,
+         aml_perception::PCLCustomMsg::Response &res);
 public:
     PCLUtilityServer() : pcl_ros_converter_(new aml_pcloud::PclRosConversions) 
     {
@@ -31,6 +23,17 @@ public:
 
 
 };
+
+bool PCLUtilityServer::processRequest(aml_perception::PCLCustomMsg::Request  &req,
+         aml_perception::PCLCustomMsg::Response &res)
+{
+    if (req.function == "read_pcd_file")
+    {
+        res.out_string_1 = req.in_string_1 + " reading success";
+    }
+    return true;
+}
+
 
 void PCLUtilityServer::initiliseServer_()
 {
