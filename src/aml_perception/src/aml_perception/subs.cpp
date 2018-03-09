@@ -8,9 +8,9 @@ int main (int argc, char** argv)
   std::string file = "/home/saif/Desktop/image_0001.pcd";
 
 
-  aml_pcl::PCLProcessor processor;
+  aml_pcloud::PCLProcessor processor;
 
-  aml_pcl::PointCloudPtr cloud = processor.getCloudFromPcdFile(file);
+  aml_pcloud::PointCloudPtr cloud = processor.getCloudFromPcdFile(file);
 
 
   // sensor_msgs::PointCloud2 ptcld;
@@ -29,17 +29,17 @@ int main (int argc, char** argv)
 
   // return (0);
 
-  sensor_msgs::PointCloud2::Ptr msg = processor.pcl_ros_converter_->ROSMsgFromPclCloud(*cloud);
+  // sensor_msgs::PointCloud2::Ptr msg = processor.pcl_ros_converter_->ROSMsgFromPclCloud(*cloud);
 
 
-  aml_pcl::PointCloudPtr cloud2 = processor.getPointsNotInPlane(cloud);
+  // aml_pcloud::PointCloudPtr cloud2 = processor.getPointsNotInPlane(cloud);
 
-  std::cout << cloud2->size() << std::endl;
+  // std::cout << cloud2->size() << std::endl;
 
 
-  pcl::PointNormal normal;
+  // pcl::PointNormal normal;
 
-  std::cout << "normal" << normal << std::endl;
+  // std::cout << "normal" << normal << std::endl;
 
   // std::cout << cloud==cloud2 << std::endl;
 
@@ -64,10 +64,10 @@ int main (int argc, char** argv)
 // #include <boost/foreach.hpp>
 
 
-// void callback(const aml_pcl::PointCloud::ConstPtr& msg)
+// void callback(const aml_pcloud::PointCloud::ConstPtr& msg)
 // {
 //   // printf ("Cloud: width = %d, height = %d\n", msg->width, msg->height);
-//   // BOOST_FOREACH (const aml_pcl::CloudPoint &pt, msg->points)
+//   // BOOST_FOREACH (const aml_pcloud::CloudPoint &pt, msg->points)
 //     sensor_msgs::PointCloud2 sm_pc2;
 //     sensor_msgs::convertPointCloudToPointCloud2(*msg, sm_pc2)
 //     processor.pcl_ros_converter_.pclCloudRGBFromROSMsg(sm_pc2)
@@ -77,10 +77,10 @@ int main (int argc, char** argv)
 // int main(int argc, char** argv)
 // {
 
-//     aml_pcl::ProcessPCL processor;
+//     aml_pcloud::ProcessPCL processor;
 
 //     ros::init(argc, argv, "sub_pcl");
 //     ros::NodeHandle nh;
-//     ros::Subscriber sub = nh.subscribe<aml_pcl::PointCloud>("points2", 1, callback);
+//     ros::Subscriber sub = nh.subscribe<aml_pcloud::PointCloud>("points2", 1, callback);
 //     ros::spin();
 // }

@@ -51,6 +51,7 @@ include_directories(
 SET(LINK_LIBS ${PCL_LIBRARIES})
 
 SET(PROJ_LIBS ${PROJECT_CODE_SOURCE}/pcl_processing.cpp)
+              # ${PROJECT_CODE_SOURCE}/pcl_utils_server.cpp)
 
 add_library(proj_libs STATIC ${PROJ_LIBS})
 
@@ -62,6 +63,9 @@ target_link_libraries(run_file ${LINK_LIBS} ${catkin_LIBRARIES} proj_libs)
 
 add_executable(subs ${PROJECT_CODE_SOURCE}/subs.cpp)
 target_link_libraries(subs ${LINK_LIBS} ${catkin_LIBRARIES} proj_libs)
+
+add_executable(utils ${PROJECT_CODE_SOURCE}/pcl_utils_server.cpp)
+target_link_libraries(utils ${LINK_LIBS} ${catkin_LIBRARIES} proj_libs)
 
 add_executable(srvr ${PROJECT_CODE_SOURCE}/test_service.cpp)
 target_link_libraries(srvr ${catkin_LIBRARIES})
