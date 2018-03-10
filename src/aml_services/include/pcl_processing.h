@@ -59,7 +59,7 @@ namespace aml_pcloud
     /**
      *----- Helper function to convert from pcl::PointCloud<pcl::PointXYZ> to sensor_msgs/PointCloud2
      */
-        sensor_msgs::PointCloud::Ptr ROSMsgFromPclCloud(PointCloud& cloud);
+        sensor_msgs::PointCloud ROSMsgFromPclCloud(PointCloud& cloud);
   
 
     };
@@ -78,7 +78,7 @@ namespace aml_pcloud
         void saveToPcdFile(std::string filename, const PointCloudPtr cloud);
 
 
-        PointCloudPtr downsamplePcdFile(const PointCloudPtr cloud); // === CAUSES SEGFAULT !!
+        PointCloudPtr downsampleCloud(const PointCloudPtr cloud, std::vector<float> &leaf_sizes); // === CAUSES SEGFAULT !!
 
         PointCloudPtr getPointsNotInPlane(PointCloudPtr input_cloud); // === CAUSES SEGFAULT !!
 
