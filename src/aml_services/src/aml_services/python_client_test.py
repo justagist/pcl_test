@@ -22,7 +22,7 @@ if __name__ == "__main__":
         raw_input()
         
         try:
-            print resp.out_cloud_1
+            # print resp.out_cloud_1
             resp2 = client("downsample_cloud",resp.out_cloud_1,None,None,[0.01,0.01,0.01])
 
             print resp2.info
