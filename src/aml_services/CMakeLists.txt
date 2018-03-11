@@ -37,9 +37,13 @@ include_directories(
   ${PROJECT_SOURCE_DIR}
 )
 
+add_message_files(
+  FILES
+  PCLCustomMsg.msg
+)
+
 add_service_files(
   FILES
-  AddTwoInts.srv
   PCLUtility.srv
 )
 
@@ -47,6 +51,7 @@ generate_messages(
   DEPENDENCIES
   std_msgs  
   sensor_msgs # and/or other packages containing depended messages
+  aml_services
 )
 
 
