@@ -27,16 +27,25 @@ if __name__ == "__main__":
         raw_input()
 
 
-        try:
-            msg2 = PCLCustomMsg()
-            msg2.cloud_1 = resp.msg_out.cloud_1
-            resp2 = client("compute_all_normals", msg2)
+        # try:
+        #     msg2 = PCLCustomMsg()
+        #     msg2.cloud_1 = resp.msg_out.cloud_1
+        #     msg2.float_array_1 = [0., 0., 0., 0., 0., 1.2, -3.2, 0., 0., 3.2, 1.2, 0, 0, 0, 0, 1]
+        #     resp2 = client("apply_transformation", msg2)
 
-            print resp2.info
+        #     print resp2.info
 
             # print resp2.msg_out.cloud_1
             # print resp2.msg_out.float_1
 
+        try:
+
+            msg2 = PCLCustomMsg()
+            msg2.cloud_1 = resp.msg_out.cloud_1
+            msg2.float_array_1 = [0.,25., 0., 0., 0., 1.2, -3.2, 0.7, 0., 3.2, 1.2, 0, 0, 0, 0, 1]
+            resp2 = client("apply_transformation", msg2)
+
+            print resp2.info
         
         # try:
         #     # print resp.out_cloud_1
@@ -48,18 +57,18 @@ if __name__ == "__main__":
 
         #     print resp2.info
 
-        #     raw_input()
+            raw_input()
 
-        #     try:
-        #         msg3 = PCLCustomMsg()
-        #         msg3.cloud_1 = resp2.msg_out.cloud_1
-        #         msg3.string_1 = "/home/saif/Desktop/image_0003.pcd"
-        #         resp3 = client("save_to_file",msg3)
+            try:
+                msg3 = PCLCustomMsg()
+                msg3.cloud_1 = resp2.msg_out.cloud_1
+                msg3.string_1 = "/home/saif/Desktop/image_0003.pcd"
+                resp3 = client("save_to_file",msg3)
 
-        #         print resp3.info
+                print resp3.info
 
-        #     except rospy.ServiceException, e:
-        #         print "Service call failed: %s"%e
+            except rospy.ServiceException, e:
+                print "Service call failed: %s"%e
 
         except rospy.ServiceException, e:
             print "Service call failed: %s"%e

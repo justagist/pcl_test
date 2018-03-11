@@ -105,14 +105,14 @@ namespace aml_pcloud
         void fitPlaneAndGetCurvature(const PointCloudPtr cloud, std::vector< int > indices, std::vector< float > &plane_parameters, float &curvature);
         
         /**
-         *  TransformPointCloud function
+         *  transformPointCloud function
          *
-         *  This function takes a point cloud and transforms it according to the camera pose
-         *  @param  normal_cloud the cloud with normals
-         *  @param  camera_pose  the camera pose
-         *  @return              the cloud transformed
+         *  This function takes a point cloud and transforms it according to the transformation defined in trans_mat
+         *  @param  input_cloud       the cloud
+         *  @param  trans_mat_array   the 4x4 transformation matrix flattened as std::vector<float>
+         *  @return                   the transformed cloud
          */
-        PointCloudPtr transformPointCloud(PointCloudPtr input_cloud, Eigen::Matrix4f camera_pose);
+        PointCloudPtr transformPointCloud(PointCloudPtr input_cloud, std::vector<float> trans_mat_array);
 
         /*
          *  Helper function to concatenate point clouds, with help from TA via Github

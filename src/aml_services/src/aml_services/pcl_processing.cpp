@@ -165,13 +165,27 @@ namespace aml_pcloud
 
     }
 
-    PointCloudPtr PCLProcessor::transformPointCloud(PointCloudPtr input_cloud, Eigen::Matrix4f camera_pose)
+    PointCloudPtr PCLProcessor::transformPointCloud(PointCloudPtr input_cloud, std::vector<float> trans_mat_array)
     {
         /**
          *  Initialize a new point cloud to save the data
          */
+
+        assert (trans_mat_array.size() == 16);
+
+        Eigen::Matrix4f trans_mat_transpose, trans_mat;
+
+        // ----- this fills the matrix in column major style. Transpose is taken since the trans_mat_array is row major.
+        for (unsigned i; i < trans_mat_array.size(); i++) // maybe there is a better way of typecasting vector into matrix ?
+        {
+            trans_mat_transpose(i) = trans_mat_array[i];
+        }
+
+        trans_mat = trans_mat_transpose.transpose();
+
         PointCloudPtr new_cloud(new PointCloud);
-        pcl::transformPointCloud(*input_cloud, *new_cloud, camera_pose);
+        pcl::transformPointCloud(*input_cloud, *new_cloud, trans_mat);
+        
         return new_cloud;
     }
 
