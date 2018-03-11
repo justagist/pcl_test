@@ -121,7 +121,7 @@ namespace aml_pcloud
          *  @param  cloud_base  the cloud to which the other cloud will be appended
          *  @param  cloud_add   the cloud to add to the other cloud
         */
-        void addPointCloud(PointCloudPtr cloud_base, PointCloudPtr cloud_add);
+        PointCloudPtr addPointClouds(PointCloudPtr cloud_base, PointCloudPtr cloud_add);
 
         /**provide an array of 3-D points (in columns), and this function will use and eigen-vector approach to find the best-fit plane
          * It returns the plane's normal vector and the plane's (signed) distance from the origin.

@@ -185,15 +185,16 @@ namespace aml_pcloud
 
         PointCloudPtr new_cloud(new PointCloud);
         pcl::transformPointCloud(*input_cloud, *new_cloud, trans_mat);
-        
+
         return new_cloud;
     }
 
-    void PCLProcessor::addPointCloud(PointCloudPtr cloud_base, PointCloudPtr cloud_add)
+    PointCloudPtr PCLProcessor::addPointClouds(PointCloudPtr cloud_base, PointCloudPtr cloud_add)
     {
-        // get the points from the clouds
-
-        *cloud_base += *cloud_add;
+        // ----- pcl concatenation
+        PointCloudPtr cloud_out(new PointCloud);
+        *cloud_out = *cloud_base + *cloud_add;
+        return cloud_out;
     }
 
     void PCLProcessor::fitPointsToPlane(Eigen::MatrixXf points_mat, Eigen::Vector3f &plane_normal, double &plane_dist) {
