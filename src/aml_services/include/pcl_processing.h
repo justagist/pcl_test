@@ -115,27 +115,21 @@ namespace aml_pcloud
         PointCloudPtr transformPointCloud(PointCloudPtr input_cloud, std::vector<float> trans_mat_array);
 
         /*
-         *  Helper function to concatenate point clouds, with help from TA via Github
-         *  @see https://github.com/Tomaat/CV2/issues/1
+         *  Helper function to concatenate point clouds
          *
          *  @param  cloud_base  the cloud to which the other cloud will be appended
          *  @param  cloud_add   the cloud to add to the other cloud
         */
         PointCloudPtr addPointClouds(PointCloudPtr cloud_base, PointCloudPtr cloud_add);
 
-        /**provide an array of 3-D points (in columns), and this function will use and eigen-vector approach to find the best-fit plane
-         * It returns the plane's normal vector and the plane's (signed) distance from the origin.
-         * @param points_array input: points_array is a matrix of 3-D points to be plane-fitted; coordinates are in columns
-         * @param plane_normal output: this function will compute components of the plane normal here
-         * @param plane_dist output: scalar (signed) distance of the plane from the origin
+        /**
+         *  computeCentroid function
+         *
+         *  This function computes the centroid of a given cloud
+         *  @param  input_cloud       the cloud
+         *  @return                   the centroid (x,y,z)
          */
-        
-        void fitPointsToPlane(Eigen::MatrixXf points_array, 
-                                Eigen::Vector3f &plane_normal, 
-                                double &plane_dist); 
-        void fitPointsToPlane(PointCloudPtr input_cloud_ptr,Eigen::Vector3f &plane_normal, double &plane_dist);
-
-        Eigen::Vector3f computeCentroid(PointCloudPtr input_cloud_ptr);
+        std::vector<float> computeCentroid(PointCloudPtr input_cloud_ptr);
 
 
     };
